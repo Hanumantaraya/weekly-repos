@@ -1,0 +1,21 @@
+name: notify
+# Opens an issue assigned to the owner when the weekly report lands; the GitHub mobile app pushes it to the phone.
+on:
+  push:
+    paths: [report.json]
+permissions:
+  issues: write
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(jq '.repos | length' report.json)
+          [ "$n" -gt 0 ] || exit 0
+          body=$(jq -r '"Top picks:\n" + ([.repos[:5][] | "- \(.full_name) (\(.category), \(.risk_level) risk)"] | join("\n"))' report.json)
+          gh issue create --title "New repos this week: $n" \
+            --body "$body"$'\n\nOpen the page: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/' \
+            --assignee "${{ github.repository_owner }}"

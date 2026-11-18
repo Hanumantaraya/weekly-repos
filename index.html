@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly New Repos</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg">
+<meta name="theme-color" content="#0b5fff">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#16181d;--muted:#5d6471;--line:#e2e5ea;--accent:#0b5fff;--low:#1a7f37;--med:#9a6700;--high:#cf222e}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--card:#161b22;--text:#e6edf3;--muted:#8b949e;--line:#30363d;--accent:#58a6ff;--low:#3fb950;--med:#d29922;--high:#f85149}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif}
+header{padding:16px;max-width:760px;margin:0 auto}
+h1{margin:0;font-size:1.3rem}
+.sub{color:var(--muted);font-size:.85rem}
+nav{display:flex;gap:8px;overflow-x:auto;padding:0 16px 8px;max-width:760px;margin:0 auto}
+nav button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--text);padding:6px 12px;border-radius:999px;font:inherit;font-size:.85rem}
+nav button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+main{max-width:760px;margin:0 auto;padding:8px 16px 32px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.card h2{margin:0;font-size:1rem;word-break:break-all}
+.card a{color:var(--accent);text-decoration:none}
+.meta{color:var(--muted);font-size:.8rem;margin:2px 0 8px}
+.badge{display:inline-block;font-size:.72rem;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid currentColor;margin-left:6px}
+.low{color:var(--low)}.medium{color:var(--med)}.high{color:var(--high)}
+h3{margin:10px 0 2px;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+ul{margin:0;padding-left:20px}
+.tip{background:var(--bg);border-radius:8px;padding:8px 10px;font-size:.88rem;margin-top:10px}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>Weekly New Repos</h1>
+  <div class="sub" id="gen"></div>
+</header>
+<nav id="tabs"></nav>
+<main id="list"></main>
+<script>
+// All report.json text comes from AI reading untrusted READMEs: render with textContent only, never innerHTML.
+const $ = id => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const safeUrl = u => /^https:\/\/github\.com\//.test(u) ? u : '#';
+let repos = [], active = 'All';
+
+function render() {
+  const tabs = $('tabs'); tabs.replaceChildren();
+  ['All', ...new Set(repos.map(r => r.category))].forEach(c => {
+    const b = el('button', '', c); b.setAttribute('aria-pressed', c === active);
+    b.onclick = () => { active = c; render(); };
+    tabs.append(b);
+  });
+  const list = $('list'); list.replaceChildren();
+  const shown = repos.filter(r => active === 'All' || r.category === active);
+  if (!shown.length) list.append(el('div', 'empty', 'No repos yet. The first report arrives Monday.'));
+  shown.forEach(r => {
+    const c = el('div', 'card');
+    const h = el('h2'); const a = el('a', '', r.full_name); a.href = safeUrl(r.url); a.target = '_blank'; a.rel = 'noopener noreferrer';
+    const lvl = ['low', 'medium', 'high'].includes(r.risk_level) ? r.risk_level : 'medium';
+    h.append(a, el('span', 'badge ' + lvl, lvl + ' risk'));
+    c.append(h, el('div', 'meta', `★ ${r.stars} · ${r.language || 'n/a'} · ${r.category}`), el('div', '', r.what));
+    [['Advantages', r.advantages], ['Security & risks', r.risks]].forEach(([t, items]) => {
+      c.append(el('h3', '', t)); const ul = el('ul');
+      (items || []).forEach(i => ul.append(el('li', '', i))); c.append(ul);
+    });
+    c.append(el('div', 'tip', '💡 Claude Code: ' + r.claude_code_tip));
+    list.append(c);
+  });
+}
+
+fetch('report.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+  repos = d.repos || [];
+  $('gen').textContent = d.generated ? `Updated ${d.generated} · ${repos.length} repos` : '';
+  render();
+}).catch(() => { $('list').append(el('div', 'empty', 'Could not load report.json')); });
+</script>
+</body>
+</html>
