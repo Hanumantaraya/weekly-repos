@@ -4,46 +4,45 @@
   {
    "full_name": "deepseek-ai/chat-demo",
    "url": "https://github.com/deepseek-ai/chat-demo",
-   "stars": 4623,
+   "stars": 4624,
    "language": "TypeScript",
    "category": "AI & Agents",
-   "what": "A chat demo application from the DeepSeek organization. Aimed at developers who want a reference chat UI for LLMs.",
+   "what": "A static browser chat demo for the DeepSeek API with no application backend. It is for developers who want a simple reference chat UI or a local single-file client.",
    "advantages": [
-    "MIT license",
-    "Established organization owner",
-    "Very high interest and 1000+ forks"
+    "MIT license from an established organization",
+    "No backend; runs from a static page",
+    "Simple pnpm dev setup"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Repo is under 1 week old with no description",
-    "Likely needs API keys for a model service",
-    "Details of features unknown"
+    "You paste an API key into the browser settings",
+    "Key handling and storage were not verified",
+    "Node and pnpm dependency install pulls many packages"
    ],
    "risk_level": "medium",
-   "claude_code_tip": "Clone it into a throwaway folder and ask Claude Code to map how API keys and requests are handled, then reuse the UI patterns in your own chat front end."
+   "claude_code_tip": "Clone into an empty throwaway folder and ask Claude Code to list every network call and where the API key is stored before you run pnpm install. Then reuse its components as a reference for your own chat UI."
   },
   {
    "full_name": "krisgfx9/Wireless-Device-Battery-Monitor",
    "url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor",
-   "stars": 3128,
+   "stars": 3132,
    "language": "C++",
    "category": "Developer Tools",
-   "what": "A Windows 10/11 tray app that shows battery level of wireless mice, headsets, keyboards and controllers. Aimed at Windows gamers and desktop users.",
+   "what": "A tiny Windows taskbar widget that shows battery levels of wireless mice, headsets, keyboards and controllers across many brands. It is for Windows desktop users.",
    "advantages": [
-    "Clear scope",
-    "Vendor-neutral device support",
-    "GPL-3.0 license"
+    "Small footprint, no vendor software required",
+    "GPL-3.0 license",
+    "Clear install and build instructions"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Brand-new personal account; 3128 stars in 2 days with 1181 open issues is unusual and could signal star farming",
-    "Windows binaries from a new owner are a malware risk; read device HID data",
-    "GPL-3.0 copyleft limits reuse"
+    "Talks directly to hardware devices over USB/HID",
+    "Binary installer from releases is not covered by source review",
+    "Very high star count with 1,181 open issues in days may signal hype or unsustainable maintenance",
+    "README has donation badges and Discord promotion"
    ],
-   "risk_level": "high",
-   "claude_code_tip": "Clone into an empty throwaway folder and ask Claude Code to list network calls, file writes and install scripts before running anything. Build from source yourself rather than running prebuilt binaries."
+   "risk_level": "medium",
+   "claude_code_tip": "Build from source in a throwaway folder and ask Claude Code to list the device and network access in the C++ sources before using the prebuilt installer."
   },
   {
    "full_name": "apex-compute/ANR",
@@ -51,20 +50,21 @@
    "stars": 2612,
    "language": "C++",
    "category": "Other",
-   "what": "Apex Neural Rendering (ANR) from Apex Compute, apparently a neural rendering project. Intended audience is graphics and GPU developers.",
+   "what": "Neural frame generation, upscaling and ray reconstruction for games, delivered as DLL packages plus an open nr-record capture tool. It is for PC and Steam Deck gamers and graphics tinkerers.",
    "advantages": [
-    "Organization owner",
-    "Active pushes this week"
+    "Supports NVIDIA, AMD and Intel GPUs",
+    "Linux and Steam Deck supported",
+    "Uninstall scripts included"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
     "No license declared",
-    "Vague metadata and no description",
-    "Stars high relative to forks (55)"
+    "Main source code is not published yet ('coming soon'), so ANR binaries are closed",
+    "Installer scripts inject DLLs into game folders",
+    "Injecting into games can trigger anti-cheat bans"
    ],
    "risk_level": "high",
-   "claude_code_tip": "Ask Claude Code to summarize the architecture and build requirements from a throwaway clone, and check the licence status before reusing any code."
+   "claude_code_tip": "Do not run the installers blindly. Ask Claude Code to read install.cmd and install.sh and list file writes and registry changes, and only try single-player games in a copy of the game folder."
   },
   {
    "full_name": "Noniv/abyssal-garden",
@@ -72,150 +72,154 @@
    "stars": 2241,
    "language": "JavaScript",
    "category": "Games & Creative",
-   "what": "A browser underwater scene made with WebGPU, all generated by code in a single 97 KB HTML file. For creative coders and demo fans.",
+   "what": "A browser-based procedurally generated underwater world you can swim through, fitting in one 96 KB HTML file with generated visuals and audio. It is for anyone who enjoys WebGPU demos.",
    "advantages": [
+    "Single file, works offline",
     "MIT license",
-    "Tiny single-file scope",
-    "No assets or dependencies"
+    "No install needed"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "New personal account",
-    "Runs WebGPU code in the browser",
-    "Little maintenance expected"
+    "Requires WebGPU in Chrome or Edge on desktop",
+    "Opening a downloaded HTML file runs its JavaScript in your browser",
+    "Stars and forks jumped very fast for a brand-new account"
    ],
    "risk_level": "low",
-   "claude_code_tip": "Ask Claude Code to explain the WebGPU shader and scene setup in the single file as a learning aid, or to adapt parts into your own demo."
+   "claude_code_tip": "Ask Claude Code to read index.html and summarize its network calls, then study it as a compact example of procedural WebGPU rendering and audio synthesis."
   },
   {
    "full_name": "gylive/google-ultra",
    "url": "https://github.com/gylive/google-ultra",
-   "stars": 2170,
+   "stars": 2172,
    "language": "Python",
    "category": "Other",
-   "what": "Repo with no description; the name suggests Google-related tooling. Purpose is unclear from metadata.",
+   "what": "A script and web page that claims to claim a hidden free 12-month Google One AI Ultra offer by driving the Play Billing client on a rooted Android phone. It is aimed at users trying to get the trial.",
    "advantages": [
+    "Offers a no-root web version and a scripted version",
     "MIT license",
-    "Active pushes"
+    "Explains the process in some detail"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "No description at all and unclear purpose",
-    "823 forks versus 21 issues suggests possible farming",
-    "Name may hint at account or access tricks; likely asks for credentials"
+    "Works by manipulating Google's billing flow with frida on a rooted phone; likely violates Google terms and may risk the account",
+    "Asks you to log in to your Google account and add a payment card",
+    "Requires root and runs instrumentation against a system app",
+    "Could be abused for fraud or phishing; web version handles credentials in an unknown way",
+    "Stars are very high for a repo days old"
    ],
    "risk_level": "high",
-   "claude_code_tip": "Do not run it. Clone to a throwaway folder and ask Claude Code to describe what it does, which credentials it needs and which hosts it contacts."
+   "claude_code_tip": "Avoid running this on any account you care about. If curious, clone into an empty folder and ask Claude Code to list network destinations, credential handling and file writes in ultra0.py and web/index.html without executing anything."
   },
   {
    "full_name": "Immortal-Protocols/lastbook",
    "url": "https://github.com/Immortal-Protocols/lastbook",
    "stars": 1902,
    "language": "Python",
-   "category": "AI & Agents",
-   "what": "Offline knowledge AI, maps and videos for survival and rebuilding. Aimed at preppers and offline-first users.",
+   "category": "Other",
+   "what": "An offline survival library for Mac, Windows and Linux bundling manuals, videos, encyclopedias, an offline map and a chat that answers from the library. It is for preppers and people wanting offline reference material.",
    "advantages": [
-    "MIT license",
-    "Offline focus reduces data leakage",
-    "Active development"
+    "MIT license for original code",
+    "Signed and notarized desktop builds",
+    "Clear release and platform table"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "145 open issues on a week-old repo",
-    "May download large models and media",
-    "Survival advice from AI may be unreliable"
+    "Large downloads from the project's own site and Linux install by apt from a downloaded package",
+    "Bundled content may carry other licenses",
+    "146 open issues already",
+    "Optional on-device AI chat adds a model download"
    ],
    "risk_level": "medium",
-   "claude_code_tip": "Ask Claude Code to list what it downloads and where it stores data, and run it in a container first."
+   "claude_code_tip": "Read the install instructions with Claude Code first and verify package hashes. For development, build the Python parts in a throwaway folder and have Claude Code audit what the chat feature sends over the network."
   },
   {
    "full_name": "erkamyaman/rust-anything",
    "url": "https://github.com/erkamyaman/rust-anything",
-   "stars": 1888,
+   "stars": 1893,
    "language": "Rust",
-   "category": "Developer Tools",
-   "what": "Tool and agent skills to rewrite an app in Rust piece by piece, verified against recorded behaviour of the original. Targets TypeScript, Python, C, Go, Ruby and Java projects.",
+   "category": "AI & Agents",
+   "what": "A tool and agent skill for migrating code projects to Rust, usable with Claude Code, Codex and similar agents. It is for developers porting codebases.",
    "advantages": [
     "MIT license",
-    "Tagged for Claude Code and Codex",
-    "Behaviour-checked migration approach"
+    "Built for agent workflows including Claude Code",
+    "Multilingual docs"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Runs and records the original program, which executes your code",
-    "Brand-new account",
-    "Generated Rust may need heavy review"
+    "Agent skills can direct an AI to rewrite and run code in your project",
+    "Migration output needs thorough testing",
+    "Install method may touch your agent skills directory",
+    "Brand-new repo with 43 open issues"
    ],
    "risk_level": "medium",
-   "claude_code_tip": "Install it as an agent skill on a copy of a small project first and review each migration step diff before merging."
+   "claude_code_tip": "Install it as a skill only after asking Claude Code to read the skill files for shell commands. Try it first on a small copy of a project in a separate folder and diff the result."
   },
   {
    "full_name": "duwqijlk/muse-protocol",
    "url": "https://github.com/duwqijlk/muse-protocol",
-   "stars": 1605,
+   "stars": 1606,
    "language": "Python",
    "category": "Security",
-   "what": "Research code that reimplements muse.ai signup and invite-code redemption over plain HTTP. Described in Chinese.",
+   "what": "A write-up and Python client that reimplements the muse.ai signup and invite-code redemption flow over plain HTTP, with batch multi-account scheduling and proxies. It targets people automating account creation.",
    "advantages": [
-    "Pure Python, small scope"
+    "Documents the protocol in detail",
+    "Offline smoke tests included",
+    "Config template provided"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "License is NOASSERTION",
-    "Automates account registration and invite codes, which likely violates service terms",
-    "632 forks against 2 issues hints at artificial attention"
+    "Automates mass account creation and invite redemption, which likely violates the service's terms",
+    "README advises using proxy exit nodes to avoid card checks",
+    "License is unclear (NOASSERTION)",
+    "Forks are very high relative to age, possible star farming",
+    "Needs your email and optional proxy credentials in config"
    ],
    "risk_level": "high",
-   "claude_code_tip": "Do not run it. If you must study it, ask Claude Code to read the code and list network calls without executing anything."
+   "claude_code_tip": "Do not run this against a live service. If you need to study it, clone into an empty folder and ask Claude Code only to summarize the protocol; do not execute example_register.py or example_batch.py."
   },
   {
    "full_name": "Eynnzerr/TelemetryCleaner",
    "url": "https://github.com/Eynnzerr/TelemetryCleaner",
-   "stars": 1554,
+   "stars": 1555,
    "language": "Kotlin",
    "category": "Mobile",
-   "what": "Android app that uses Shizuku, without root, to remove preinstalled telemetry modules on Chinese Android phones. For privacy-minded Android users.",
+   "what": "An Android app (Kotlin, using Shizuku) that detects carrier-preinstalled telemetry components on Chinese-market firmware and lets you uninstall or restore them. It is for Android power users in China.",
    "advantages": [
     "MIT license",
-    "No root needed",
-    "Clear focused purpose"
+    "Restore function for removed components",
+    "Community-maintained package list"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Needs Shizuku, which grants elevated ADB-level permissions",
-    "Disabling system packages can break the phone",
-    "Description is in Chinese"
+    "Needs Shizuku, which grants elevated system access",
+    "Uninstalling system packages can break phone features",
+    "Documentation mainly in Chinese",
+    "Binaries come from Releases, not audited here"
    ],
    "risk_level": "medium",
-   "claude_code_tip": "Ask Claude Code to list the exact packages and commands the app issues, and compare with your device before use."
+   "claude_code_tip": "Ask Claude Code to read the package catalogue and the Shizuku calls to see exactly which packages can be removed, and back up your phone before testing."
   },
   {
    "full_name": "ZiChuanLan/freebie-radar",
    "url": "https://github.com/ZiChuanLan/freebie-radar",
    "stars": 1489,
    "language": "TypeScript",
-   "category": "Data & Databases",
-   "what": "Aggregator polling 100+ sources for freebies and news, with AI filtering and Telegram push. For deal hunters.",
+   "category": "Web & Frontend",
+   "what": "A self-hosted aggregator that collects freebies, deals, car-pool offers, open source projects and news from many sources with AI-based grading and push notifications. It is for self-hosters in Chinese-speaking communities.",
    "advantages": [
     "MIT license",
-    "Clear architecture described",
-    "Active"
+    "Self-hosted with a docs site",
+    "Many source integrations"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Needs AI and Telegram tokens",
-    "Scrapes many sources, risk of ToS issues",
-    "Zero open issues despite many stars"
+    "Needs AI provider keys and notification tokens in configuration",
+    "Scrapes many third-party sites",
+    "Mostly Chinese documentation",
+    "Trendshift badge and fast star growth with zero open issues"
    ],
    "risk_level": "medium",
-   "claude_code_tip": "Run it in a container with throwaway tokens; ask Claude Code to list every outbound domain first."
+   "claude_code_tip": "Run it in a container or throwaway folder and ask Claude Code to list every outbound domain and the secrets it reads from environment variables before supplying real keys."
   },
   {
    "full_name": "CzzzzzzJ/mdldm-maitian",
@@ -223,20 +227,21 @@
    "stars": 1149,
    "language": "JavaScript",
    "category": "Developer Tools",
-   "what": "Creator dashboard and Chrome extension to publish to Bilibili, Douyin, Xiaohongshu, YouTube and X, with Feishu alerts. For content creators.",
+   "what": "An open-source workbench for creators on several platforms, with a Chrome extension, a dashboard and Feishu automation, for macOS. It is for content creators who publish across platforms.",
    "advantages": [
     "MIT license",
-    "Useful dashboard feature set"
+    "Published Chrome extension",
+    "Clear Node.js version requirement"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Chrome extension with broad permissions and logged-in sessions",
-    "Needs platform and Feishu credentials",
-    "Automated posting may breach platform rules"
+    "Chrome extension can request broad browser permissions",
+    "Connects to social and Feishu accounts, so tokens are involved",
+    "Install may use curl-based or script setup",
+    "macOS only"
    ],
-   "risk_level": "high",
-   "claude_code_tip": "Before installing, ask Claude Code to audit the extension manifest permissions and every network call."
+   "risk_level": "medium",
+   "claude_code_tip": "Have Claude Code read the extension manifest.json permissions and any install script before installing, and run the Node app in an empty folder first."
   },
   {
    "full_name": "sybil-solutions/inference-optimisation-skill",
@@ -244,42 +249,42 @@
    "stars": 978,
    "language": "Python",
    "category": "AI & Agents",
-   "what": "Agent skill that guides tuning of local LLM serving speed such as speculative decoding, prefill and KV cache. For people running local models.",
+   "what": "An agent skill for hill-climbing the speed of a local LLM server through measured, one-change-at-a-time experiments with stability gates. It is for people tuning local inference.",
    "advantages": [
-    "MIT license",
-    "Tagged for Claude Code",
-    "Focused scope"
+    "MIT license from an organization",
+    "Methodical, evidence-based workflow",
+    "Directly suited to Claude Code"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Skill makes the agent run benchmarks and change server configs",
-    "Single day of activity",
-    "Skill files steer agent behaviour"
+    "Skill drives the agent to run benchmarks and servers on your machine",
+    "Heavy GPU and memory use during runs",
+    "Single day of activity so far",
+    "Advice is tied to specific hardware tested"
    ],
-   "risk_level": "medium",
-   "claude_code_tip": "Read the skill file first, then copy it into your skills folder and use it on a non-production box."
+   "risk_level": "low",
+   "claude_code_tip": "Copy it into your skills folder and have Claude Code walk through the steps for your own hardware, reviewing each command before approving it."
   },
   {
    "full_name": "joshpuckett/allo",
    "url": "https://github.com/joshpuckett/allo",
-   "stars": 938,
+   "stars": 939,
    "language": "Python",
    "category": "Games & Creative",
-   "what": "Free open source typeface named Allo. For designers and developers.",
+   "what": "A variable typeface called Allo, optimized for screens, with weight and roundness axes plus many alternates. It is for designers and interface developers.",
    "advantages": [
-    "OFL-1.1 license",
-    "Single clear purpose",
-    "Known individual owner"
+    "OFL-1.1 open font license",
+    "Variable axes and OpenType features",
+    "Focused scope"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Build scripts in Python are not audited",
-    "Only a font so low impact"
+    "Repository builds fonts using Python tooling",
+    "Little documentation of the build pipeline in README",
+    "Single-maintainer project"
    ],
    "risk_level": "low",
-   "claude_code_tip": "Ask Claude Code to wire the font into your site's CSS and check the licence terms."
+   "claude_code_tip": "Ask Claude Code to wire the font files into a web project with CSS font-variation-settings, and to explain the available axes from the font metadata."
   },
   {
    "full_name": "haziqahmedqasmi/PeakCut",
@@ -287,21 +292,21 @@
    "stars": 920,
    "language": "Python",
    "category": "AI & Agents",
-   "what": "Self-hosted AI clipper for long videos and live streams using your own AI key. For streamers and editors.",
+   "what": "A self-hostable tool that turns long videos and live streams into captioned vertical clips using AI transcription and highlight detection, and can post them to your accounts. It is for creators and clipping teams.",
    "advantages": [
     "MIT license",
-    "Self-hosted",
-    "Bring your own key"
+    "Runs on your own machine or server",
+    "Covers upload, caption and post workflow"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Needs your AI API key",
-    "Downloads and processes video from external URLs",
-    "Many forks relative to issues"
+    "Needs your own AI API key",
+    "Can connect to social accounts for auto-posting, which means tokens",
+    "Downloads and records third-party videos and streams, raising copyright concerns",
+    "24 open issues in a few days"
    ],
    "risk_level": "medium",
-   "claude_code_tip": "Use a restricted, low-budget API key and ask Claude Code to trace where the key and media are sent."
+   "claude_code_tip": "Run it in a container and ask Claude Code to show where keys and social tokens are stored and which domains it contacts, before connecting any real accounts."
   },
   {
    "full_name": "opencoredev/islandcn",
@@ -309,61 +314,64 @@
    "stars": 801,
    "language": "TypeScript",
    "category": "Web & Frontend",
-   "what": "Dynamic Island component for React installed via shadcn. For frontend developers.",
+   "what": "A Dynamic Island-style React component installed through shadcn, for showing uploads, timers, calls and other activities. It is for React and Next.js developers.",
    "advantages": [
     "MIT license",
-    "Small focused UI scope",
-    "Standard shadcn install"
+    "Clear code example",
+    "Fits existing shadcn workflows"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Registry install pulls code into your project",
-    "Only one day of activity"
+    "Install pulls a JSON registry from a remote site and writes source into your project",
+    "Brand-new organization",
+    "Registry content could change after you review it"
    ],
    "risk_level": "low",
-   "claude_code_tip": "Run the install in a branch and have Claude Code review the added component files before committing."
+   "claude_code_tip": "Run the shadcn add command on a branch and ask Claude Code to review the diff of the generated files, then adapt the island actions to your app."
   },
   {
    "full_name": "chuanqisun/spaceship",
    "url": "https://github.com/chuanqisun/spaceship",
    "stars": 775,
    "language": "HTML",
-   "category": "Web & Frontend",
-   "what": "Browser tool described as steering ideas in realtime. Purpose is vague.",
+   "category": "AI & Agents",
+   "what": "An experimental 'spaceship IDE' demo exploring real-time LLM interactions at high speed, with a hosted simulator. It is for researchers and UI experimenters.",
    "advantages": [
     "MIT license",
-    "Single-page HTML"
+    "Online demo available",
+    "Interesting concept"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Very thin description",
-    "May call external AI APIs and ask for keys",
-    "No further activity since creation"
+    "Live mode asks for Cerebras and Gemini API keys in the browser",
+    "Keys sit in local storage, which the README itself calls risky",
+    "Experimental, likely unmaintained",
+    "Zero open issues and little activity"
    ],
    "risk_level": "medium",
-   "claude_code_tip": "Open the HTML in an editor via Claude Code and list external requests before running it."
+   "claude_code_tip": "Use throwaway API keys with spend limits, and ask Claude Code to check how the keys are stored and sent before pasting real ones."
   },
   {
    "full_name": "AIRzZ90/study-materials-fork",
    "url": "https://github.com/AIRzZ90/study-materials-fork",
    "stars": 746,
    "language": "TypeScript",
-   "category": "Mobile",
-   "what": "Cross-platform Tauri 2 interface and interaction practice project. Name suggests a fork of something.",
+   "category": "Other",
+   "what": "A fork-style copy of a Tauri 2 Rust app for media-type interfaces, with a request to star the original repo. It appears to repackage an upstream project, for hobbyists.",
    "advantages": [
-    "Tauri keeps the app small"
+    "Documents a non-commercial license clearly",
+    "Rust and Tauri cross-platform stack"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "License is NOASSERTION",
-    "Name and forks/stars ratio (1231 forks, 746 stars) look odd, possible farming",
-    "Misleading name versus description"
+    "Repository text begs for stars, a possible star-farming signal",
+    "License is NOASSERTION in metadata and PolyForm Noncommercial in text",
+    "Handles third-party media sources with disclaimed support, raising copyright issues",
+    "Maintainer says it is not actively maintained",
+    "Redistribution of a fork with a different name"
    ],
    "risk_level": "high",
-   "claude_code_tip": "Clone into an empty throwaway folder and ask Claude Code to list network calls, file writes and install scripts before running anything."
+   "claude_code_tip": "Do not build or run this. If needed, inspect the upstream project instead, and ask Claude Code to compare this copy with it for added code."
   },
   {
    "full_name": "huggingface/pybot",
@@ -371,20 +379,20 @@
    "stars": 728,
    "language": "Python",
    "category": "AI & Agents",
-   "what": "A rule-based chatbot in pure Python written by a swarm of agents, no model weights. For people curious about agent-written software.",
+   "what": "A Hugging Face project showing a rule-based chatbot written in plain Python with no weights or training, inspired by ELIZA. It is for learners and people curious about non-LLM chatbots.",
    "advantages": [
     "Apache-2.0 license",
-    "Reputable organization",
-    "No weights or training"
+    "Well-known organization",
+    "Small and educational"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Experimental project",
-    "Agent-written code may have quality issues"
+    "Early-stage repo",
+    "Rule-based bots are limited",
+    "Zero open issues may mean little testing by others"
    ],
    "risk_level": "low",
-   "claude_code_tip": "Ask Claude Code to review the rule engine structure and compare it with an LLM approach."
+   "claude_code_tip": "Ask Claude Code to explain the rule engine and extend it with new patterns, or use it as a baseline to compare against an LLM chatbot."
   },
   {
    "full_name": "n4ze3m/tiny-voca",
@@ -392,21 +400,20 @@
    "stars": 705,
    "language": "Python",
    "category": "AI & Agents",
-   "what": "A 4.5M-parameter two-voice English text-to-speech model trained from scratch, with ONNX export. For developers wanting tiny local TTS.",
+   "what": "A tiny English text-to-speech model with 4.5M parameters and two voices, running on CPU or in the browser via ONNX. It is for developers needing lightweight TTS.",
    "advantages": [
     "Apache-2.0 license",
-    "Very small model",
-    "Runs locally via ONNX"
+    "Open code, weights and dataset",
+    "Runs on CPU and in browser"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "Model quality likely limited",
-    "Downloads model weights",
-    "New personal account"
+    "Install clones and downloads model weights from external hosts",
+    "English only, two voices",
+    "Quality limits of a very small model"
    ],
    "risk_level": "low",
-   "claude_code_tip": "Ask Claude Code to write a small script that loads the ONNX model and synthesizes speech offline."
+   "claude_code_tip": "Install in a fresh virtual environment and ask Claude Code to write a small script that generates speech with ONNX Runtime, checking the download URLs first."
   },
   {
    "full_name": "yetanotherbrowser/yab",
@@ -414,20 +421,21 @@
    "stars": 691,
    "language": "Swift",
    "category": "Developer Tools",
-   "what": "Native macOS browser with iPhone and Android companions. For Mac users.",
+   "what": "A small native macOS browser with an iPhone companion that can run WebKit or Chromium per tab and lets AI agents work in tabs. It is for Mac users wanting a minimal browser with agent support.",
    "advantages": [
     "Apache-2.0 license",
-    "Native Swift"
+    "Native Swift app",
+    "Private tabs hidden from agents"
    ],
    "risks": [
     "Based on README and metadata only; code not audited",
-    "README could not be fetched in this run, so the description comes from repo metadata",
-    "940 open issues on a week-old repo is odd",
-    "Browser handles passwords and sessions, so high trust needed",
-    "Brand-new organization"
+    "Browser agents can act on pages with your sessions",
+    "Closed download from the project website",
+    "940 open issues in days, a sign of rapid early churn",
+    "Browser is high-value attack surface"
    ],
-   "risk_level": "high",
-   "claude_code_tip": "Do not install prebuilt binaries; build from source and ask Claude Code to audit network calls and data sync first."
+   "risk_level": "medium",
+   "claude_code_tip": "Do not sign into sensitive accounts at first. Ask Claude Code to look at how agent permissions are scoped in the source before enabling agents."
   }
  ]
 }
